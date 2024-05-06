@@ -78,7 +78,6 @@ app.use(function (err, req, res, next) {
   }
 
   //production
-  console.log(err.name)
   if (err.name === 'ValidationError') {
     err.message = "資料欄位未填寫正確，請重新輸入"
     err.isOperational = true;
@@ -86,10 +85,6 @@ app.use(function (err, req, res, next) {
   }
 
   return resErrorProd(err, res);
-  /*   console.log("app 1");
-    res.status(500).json({
-      "err": err.message
-    }) */
 })
 
 process.on('unhandledRejection', (err, promise) => {

@@ -52,7 +52,6 @@ const loginController = async function (req, res, next) {
     }
 
     const user = await User.findOne({ email }).select('+password');
-    console.log(user.password)
     const auth = await comparePassword(password, user.password);
 
     if (!auth) {
@@ -76,14 +75,13 @@ const updateUserController = async function (req, res, next) {
     const sex = req.body.sex || '';
 
     if (!userName.trim() || !email.trim() || !password.trim()) {
-        return next(appError("400", "暱稱或 email 或密碼不可為空，請重新輸入", next))
+        return next(appError("400", "暱稱或 email 或密碼不可為空，請重新輸入", next));
     }
 
     if (!validator.isEmail(email)) {
-        return next(appError("400", "Email 格式不正確", next))
+        return next(appError("400", "Email 格式不正確", next));
     }
 
-    //handleErrorAsync
     const newPassword = await hashPassword(password);
     const user = await User.findByIdAndUpdate(req.user.id, { userName: userName, email: email, password: newPassword, photo: photo, sex: sex });
     generateSendJWT(user, 200, res);
@@ -94,7 +92,7 @@ const updatePasswordController = async function (req, res, next) {
     const confirmPassword = req.body.confirmPassword || '';
 
     if (!password.trim() || !confirmPassword.trim()) {
-        return next(appError("400", "密碼不可為空，請重新輸入", next))
+        return next(appError("400", "密碼不可為空，請重新輸入", next));
     }
 
     if (password !== confirmPassword) {

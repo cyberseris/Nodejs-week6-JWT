@@ -11,7 +11,7 @@ const requireSignIn = handleErrorAsync(async (req, res, next) => {
     }
 
     if (!token) {
-        return next(appError("401", "您尚未登入", next))
+        return next(appError("401", "您尚未登入", next));
     }
 
     const decoded = await JWT.verify(token, process.env.JWT_SECRET);

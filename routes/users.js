@@ -4,13 +4,10 @@ const handleErrorAsync = require('../service/handleErrorAsync');
 const { getUserController, registerController, loginController, updatePasswordController, updateUserController } = require('../controllers/usersController');
 const { requireSignIn } = require('../middlewares/authMiddleware');
 
-/* router.get('/', handleErrorAsync(usersController.getUserController)); */
 router.get('/profile', requireSignIn, handleErrorAsync(getUserController));
 router.post('/sign_up', handleErrorAsync(registerController));
 router.post('/sign_in', handleErrorAsync(loginController));
-router.patch('/updatePassword', requireSignIn, handleErrorAsync(updatePasswordController));
-router.put('/profile', requireSignIn, handleErrorAsync(updateUserController));
-
-/* router.post('/', handleErrorAsync(usersController.createUserController)); */
+router.post('/updatePassword', requireSignIn, handleErrorAsync(updatePasswordController));
+router.patch('/profile', requireSignIn, handleErrorAsync(updateUserController));
 
 module.exports = router;

@@ -24,7 +24,7 @@ const generateSendJWT = (user, statusCode, res) => {
             token,
             name: user.name
         }
-    })
+    });
 }
 
 module.exports = {

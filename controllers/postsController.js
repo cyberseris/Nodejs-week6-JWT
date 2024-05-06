@@ -53,12 +53,15 @@ const createPostController = async function (req, res, next) {
     if (JSON.stringify(req.body) == '{}') {
         return next(appError(400, "未填寫要新增內容", next));
     }
-    if (req.body.userName) {
+
+    const userName = req.body.userName.trim();
+
+    if (userName) {
         let query = {};
-        if (ObjectId.isValid(req.body.userName)) {
-            query = { _id: req.body.userName };
+        if (ObjectId.isValid(userName)) {
+            query = { _id: userName };
         } else {
-            query = { userName: req.body.userName };
+            query = { userName: userName };
         }
         const userResult = await User.find(query);
 
@@ -89,13 +92,13 @@ const deletePostController = async function (req, res, next) {
     const deletePost = await Post.findByIdAndDelete(req.params.id);
 
     if (!deletePost) {
-        return next(appError("400", "刪除貼文失敗", next))
+        return next(appError("400", "刪除貼文失敗", next));
     }
 
     res.status(200).json({
         success: 'success',
         message: '刪除貼文成功'
-    })
+    });
 };
 
 const deleteAllPostController = async function (req, res, next) {
@@ -108,7 +111,7 @@ const deleteAllPostController = async function (req, res, next) {
     res.status(200).json({
         success: 'success',
         message: '刪除所有貼文成功'
-    })
+    });
 };
 
 const updatePostController = async function (req, res, next) {
@@ -116,20 +119,20 @@ const updatePostController = async function (req, res, next) {
     const image = req.body.image || '';
 
     if (!content.trim()) {
-        return next(appError("400", "內容不可為空，請重新輸入", next))
+        return next(appError("400", "內容不可為空，請重新輸入", next));
     }
 
     const newPost = await Post.findByIdAndUpdate(req.params.id, { content: content.trim(), image: image });
 
     if (!newPost) {
-        return next(appError("400", "更新失敗", next))
-    }
+        return next(appError("400", "更新失敗", next));
+    };
 
     res.status(200).json({
         success: 'success',
         newPost
-    })
-};
+    });
+}
 
 module.exports = {
     getPostController: getPostController,
