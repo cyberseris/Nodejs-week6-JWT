@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "4ea40e9c-3678-435e-ae9b-e124cb855a86",
+		"name": "Nodejs-week6-JWT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34604243"
+	},
+	"item": [
+		{
+			"name": "會員功能",
+			"item": [
+				{
+					"name": "註冊",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\" : \"testtest\",\r\n    \"email\": \"yy342@gmail.com\",\r\n    \"password\": \"!QAZ2wsx#EDC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/users/sign_up",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@test.com\",\r\n    \"password\":\"!QAZ2wsx#EDC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/users/sign_in",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "重設密碼",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjgyOCwiZXhwIjoxNzE1NjAxNjI4fQ.Nmdtf_pdK7ElCw5h0-ZXYKTzKqaBndfio7hfNuyPnQ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"!QAZ2wsx#EDC\",\r\n    \"confirmPassword\": \"!QAZ2wsx#EDC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/users/updatePassword",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得個人資料",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjgyOCwiZXhwIjoxNzE1NjAxNjI4fQ.Nmdtf_pdK7ElCw5h0-ZXYKTzKqaBndfio7hfNuyPnQ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/users/profile",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "更新個人資料",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NTc4NywiZXhwIjoxNzE1NjAwNTg3fQ.JUw3b7tZbtHpnPdv3KlyoUvtqHEBZYM9qxAc4l26TOk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"test\",\r\n    \"email\": \"test@test.com\",\r\n    \"password\": \"!QAZ2wsx#EDC\",\r\n    \"sex\": \"女\",\r\n    \"photo\": \"http://example.com/image.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/users/profile",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "貼文功能",
+			"item": [
+				{
+					"name": "新增貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjkxMiwiZXhwIjoxNzE1NjAxNzEyfQ.R7Tb4hUAAxRrQGJAZmtig6pnYHkwK1Tef8SLa7jEOx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"userName\":\"六角\",\"content\":\"這是一個防呆測試貼文。\",\"image\":\"http://nexample.com/image.jpg\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得貼文(由舊到新)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjkxMiwiZXhwIjoxNzE1NjAxNzEyfQ.R7Tb4hUAAxRrQGJAZmtig6pnYHkwK1Tef8SLa7jEOx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "取得貼文(由新到舊)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjkxMiwiZXhwIjoxNzE1NjAxNzEyfQ.R7Tb4hUAAxRrQGJAZmtig6pnYHkwK1Tef8SLa7jEOx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts?timeSort=desc",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "本月貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjkxMiwiZXhwIjoxNzE1NjAxNzEyfQ.R7Tb4hUAAxRrQGJAZmtig6pnYHkwK1Tef8SLa7jEOx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts?timeSort=monthDesc",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "timeSort",
+									"value": "monthDesc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "搜尋貼文",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts?Keyword=前端",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "Keyword",
+									"value": "前端"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除單筆貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjkxMiwiZXhwIjoxNzE1NjAxNzEyfQ.R7Tb4hUAAxRrQGJAZmtig6pnYHkwK1Tef8SLa7jEOx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts/6638c7068824717bf502293a",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts",
+								"6638c7068824717bf502293a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刪除所有貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NjkxMiwiZXhwIjoxNzE1NjAxNzEyfQ.R7Tb4hUAAxRrQGJAZmtig6pnYHkwK1Tef8SLa7jEOx8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "編輯貼文",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MzhjMDAzZDEzOTZkODAwZjg0YjhhMiIsImlhdCI6MTcxNDk5NzIzNCwiZXhwIjoxNzE1NjAyMDM0fQ.A57o8TxphjqUxvqhBR-lp8D_SQFgua_JC1sfyH5JlJ8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"這是一個防呆測試貼文~~~~\",\r\n    \"image\":\"http://nexample.com/image2.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://nodejs-week6-jwt.onrender.com/api/posts/6638c70c8824717bf502293e",
+							"protocol": "https",
+							"host": [
+								"nodejs-week6-jwt",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts",
+								"6638c70c8824717bf502293e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

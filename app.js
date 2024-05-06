@@ -12,8 +12,6 @@ const dotenv = require('dotenv');
 var app = express();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
-const bcrypt = require('bcryptjs');
-const validator = require('validator');
 
 dotenv.config({ path: './config.env' });
 
