@@ -6,7 +6,7 @@ const { requireSignIn } = require('../middlewares/authMiddleware');
 
 router.post('/sign_up', handleErrorAsync(registerController));
 router.post('/sign_in', handleErrorAsync(loginController));
-router.post('/updatePassword', requireSignIn, handleErrorAsync(updatePasswordController));
+router.patch('/updatePassword', requireSignIn, handleErrorAsync(updatePasswordController));
 router.get('/profile', requireSignIn, handleErrorAsync(getUserController));
 router.patch('/profile', requireSignIn, handleErrorAsync(updateUserController));
 
