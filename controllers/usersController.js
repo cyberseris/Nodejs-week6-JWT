@@ -43,7 +43,6 @@ const registerController = async function (req, res, next) {
     generateSendJWT(newUser, 201, res);
 };
 
-//OK
 const loginController = async function (req, res, next) {
     const email = req.body.email || '';
     const password = req.body.password || '';
@@ -62,7 +61,6 @@ const loginController = async function (req, res, next) {
     generateSendJWT(user, 200, res);
 };
 
-//OK
 const getUserController = async function (req, res, next) {
     res.status(200).json({
         success: 'success',

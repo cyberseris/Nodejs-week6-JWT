@@ -7,6 +7,6 @@ router.get('/', handleErrorAsync(getPostController));
 router.post('/', handleErrorAsync(createPostController));
 router.delete('/:id', handleErrorAsync(deletePostController));
 router.delete('/', handleErrorAsync(deleteAllPostController));
-router.put('/patch', handleErrorAsync(updatePostController));
+router.patch('/:id', handleErrorAsync(updatePostController));
 
 module.exports = router;
