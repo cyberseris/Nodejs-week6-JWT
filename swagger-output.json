@@ -1,120 +1,17 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Meta-Wall",
-    "description": "Meta-Wall API",
+    "title": "Nodejs-week6-JWT",
+    "description": "JWT 身份驗證機制",
     "version": "1.0.0"
   },
-  "host": "nodejs-week5-meta-wall.onrender.com",
-  "port": "{{PORT}}",
+  "host": "localhost:3005",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api/posts/": {
-      "get": {
-        "tags": [
-          "Posts - 搜尋貼文"
-        ],
-        "description": "搜尋貼文 API",
-        "parameters": [
-          {
-            "name": "timeSort",
-            "in": "query",
-            "type": "string",
-            "description": "ex: desc or monthDesc, default: asc"
-          },
-          {
-            "name": "Keyword",
-            "in": "query",
-            "type": "string",
-            "description": "ex: 測試"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "搜尋成功",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "success": {
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "message": {
-                    "type": "string",
-                    "example": "搜尋成功"
-                  },
-                  "post": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "_id": {
-                          "type": "string",
-                          "example": "662ec324ad9afd608b5c6d88"
-                        },
-                        "userName": {
-                          "type": "string",
-                          "example": {
-                            "_id": "663272d5917b29ff1a82fac2",
-                            "userName": "六角",
-                            "photo": "https://thumb.fakeface.rest/thumb_female_21_5a24gdhfjxnhzahsggbfchbsxnjjjjdxzmasnd3jx.jpg"
-                          }
-                        },
-                        "content": {
-                          "type": "string",
-                          "example": "這是一個測試貼文。"
-                        },
-                        "image": {
-                          "type": "string",
-                          "example": "http://nexample.com/image.jpg"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "example": "2024-02-28T21:44:04.703Z"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          },
-          "400": {
-            "description": "搜尋失敗",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "success": {
-                    "type": "boolean",
-                    "example": false
-                  },
-                  "message": {
-                    "type": "string",
-                    "example": "搜尋異常"
-                  },
-                  "errMsg": {
-                    "type": "string",
-                    "example": "errMsg"
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
-          }
-        }
-      },
       "post": {
         "tags": [
           "Posts - 新增貼文"
@@ -122,105 +19,184 @@
         "description": "新增貼文 API",
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "description": "資料格式",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "userName": {
-                  "type": "string",
-                  "example": "六角"
-                },
-                "content": {
-                  "type": "string",
-                  "example": "這是一篇前端貼文"
-                },
-                "image": {
-                  "type": "string",
-                  "example": "http://nexample.com/image.jpg"
-                }
-              }
-            }
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
           }
         ],
         "responses": {
-          "200": {
-            "description": "新增成功",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "success": {
-                    "type": "boolean",
-                    "example": true
-                  },
-                  "message": {
-                    "type": "string",
-                    "example": "新增成功"
-                  },
-                  "post": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "_id": {
-                          "type": "string",
-                          "example": "662ec324ad9afd608b5c6d88"
-                        },
-                        "userName": {
-                          "type": "string",
-                          "example": "663272d5917b29ff1a82fac2"
-                        },
-                        "content": {
-                          "type": "string",
-                          "example": "這是一個測試貼文。"
-                        },
-                        "image": {
-                          "type": "string",
-                          "example": "http://nexample.com/image.jpg"
-                        },
-                        "createdAt": {
-                          "type": "string",
-                          "example": "2024-02-28T21:44:04.703Z"
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Posts - 取得貼文"
+        ],
+        "description": "取得貼文 API",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Posts - 刪除所有貼文"
+        ],
+        "description": "刪除所有貼文 API",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/posts/{id}": {
+      "patch": {
+        "tags": [
+          "Posts - 更新貼文"
+        ],
+        "description": "更新貼文 API",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           },
-          "400": {
-            "description": "新增失敗",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "success": {
-                    "type": "boolean",
-                    "example": false
-                  },
-                  "message": {
-                    "type": "string",
-                    "example": "新增貼文失敗"
-                  },
-                  "errMsg": {
-                    "type": "string",
-                    "example": "Post validation failed: content: Content 未填寫, userName: 貼文姓名未填寫"
-                  }
-                }
-              },
-              "xml": {
-                "name": "main"
-              }
-            }
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Posts - 刪除單筆貼文"
+        ],
+        "description": "刪除單筆貼文 API",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/users/sign_up": {
+      "post": {
+        "tags": [
+          "Users - 註冊"
+        ],
+        "description": "註冊 API",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/users/sign_in": {
+      "post": {
+        "tags": [
+          "Users - 登入"
+        ],
+        "description": "登入 API",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/users/updatePassword": {
+      "post": {
+        "tags": [
+          "Users - 重設密碼"
+        ],
+        "description": "重設密碼 API",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/users/profile": {
+      "get": {
+        "tags": [
+          "Users - 取得個人資料"
+        ],
+        "description": "取得個人資料 API",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Users - 更新個人資料"
+        ],
+        "description": "更新個人 API",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }

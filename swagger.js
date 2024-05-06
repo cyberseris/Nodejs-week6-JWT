@@ -2,8 +2,8 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Meta-Wall',
-    description: 'Description'
+    title: 'Nodejs-week6-JWT',
+    description: 'JWT 身份驗證機制'
   },
   host: 'localhost:3005'
 };

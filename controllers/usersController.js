@@ -5,19 +5,10 @@ const { hashPassword, comparePassword, generateSendJWT } = require('../helpers/a
 const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' })
 
-//OK
 const registerController = async function (req, res, next) {
     const userName = req.body.userName || '';
     const password = req.body.password || '';
     const email = req.body.email || '';
-    /*     const pwdOptions = {
-            minLength: 8,      //最小長度
-            minLowercase: 1,   //至少一個小寫字母
-            minUppercase: 1,   //至少一個大寫字母
-            minNumbers: 1,     //至少一個數字
-            minSymbols: 1,     //至少一個特殊字符
-            returnStore: false //是否返回詳細分數
-        } */
 
     if (!userName.trim() || !email.trim() || !password.trim()) {
         return next(appError("400", "暱稱或 email 或密碼不可為空，請重新輸入", next))
