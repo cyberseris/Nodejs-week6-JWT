@@ -8,6 +8,6 @@ router.post('/sign_up', handleErrorAsync(registerController));
 router.post('/sign_in', handleErrorAsync(loginController));
 router.patch('/updatePassword', requireSignIn, handleErrorAsync(updatePasswordController));
 router.get('/profile', requireSignIn, handleErrorAsync(getUserController));
-router.patch('/profile', requireSignIn, handleErrorAsync(updateUserController));
+router.put('/profile', requireSignIn, handleErrorAsync(updateUserController));
 
 module.exports = router;
